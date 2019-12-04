@@ -1,0 +1,209 @@
+<!--1. Crear las expresiones regulares que reconozcan:
+a) Números enteros: Ejemplos +342, -123, 98
+b) Códigos postales: Ejemplos 22432, 50200, 21300 (todos tienen 5 cifras).
+c) Fechas: Ejemplos 01/05/1992, 02-06-2003 (formatos dd/mm/aaaa, dd-mm-aaaa)
+d) Número reales: Ejemplos 123,23 9.3 8 +2.2 -33 -42,1
+Probar que las expresiones regulares están bien definidas a través de pruebas en JavaScript.
+
+2. Generar y probar una expresión regular para reconocer números internacionales. El código
+del país tiene un mínimo de dos cifras y un máximo de tres.
+Ejemplos: (+34)954102030, (+210)333222111
+
+3. Utilizar un bucle para mostrar todos los elementos del
+Array("975000222","976112233","976009988","974998899","978778866").
+Cada vez que aparezca un número de teléfono de Zaragoza debe aparecer al lado del teléfono
+la palabra Zaragoza.-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <fieldset>
+      <legend>Ejercicio 1a: Números enteros</legend>
+      <form>
+        <input type="text" id="cadena">
+        <input type="text" id="resultCadena">
+        <input type="button" value="Comprobar" onclick="ej1a(cadena,resultCadena)">
+      </form>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>Ejercicio 1b: Códigos postales</legend>
+      <form>
+        <input type="text" id="CP">
+        <input type="text" id="resultCP">
+        <input type="button" value="Comprobar" onclick="ej1b(CP,resultCP)">
+      </form>
+
+    </fieldset>
+
+
+          <fieldset>
+            <legend>Ejercicio 1c: Fechas</legend>
+            <form>
+              <input type="text" id="fecha">
+              <input type="text" id="resultFecha">
+              <input type="button" value="Comprobar" onclick="ej1c(fecha,resultFecha)">
+            </form>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Ejercicio 1d: Números reales</legend>
+            <form>
+              <input type="text" id="real">
+              <input type="text" id="resultReal">
+              <input type="button" value="Comprobar" onclick="ej1d(real,resultReal)">
+            </form>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Ejercicio 2: Números internacionales</legend>
+            <form>
+              <input type="text" id="intnal">
+              <input type="text" id="resultIntnal">
+              <input type="button" value="Comprobar" onclick="ej2(intnal,resultIntnal)">
+            </form>
+
+          </fieldset>
+
+          <fieldset >
+            <legend>Ejercicio 3: Números Zaragoza</legend>
+
+            <form id="field3">
+
+              <input type="button" value="Mostrar" onclick="ej3()">
+            </form>
+
+          </fieldset>
+
+
+    <script type="text/javascript">
+
+      function ej1a(input,output) {
+
+        output.value = compruebaEntero(input.value);
+      }
+
+      function ej1b(input,output) {
+
+        output.value = compruebaCP(input.value);
+      }
+
+      function ej1c(input,output) {
+
+        output.value = compruebaFecha(input.value);
+      }
+
+      function ej1d(input,output) {
+
+        output.value = compruebaReal(input.value);
+      }
+
+      function ej2(input,output) {
+
+        output.value = compruebaIntnal(input.value);
+      }
+
+
+
+      function compruebaEntero(num){
+
+        if (num.match(/^(\+|-)?\d+$/)) {
+          return "Numero entero correcto";
+        } else{
+          return "Numero entero incorrecto";
+        }
+
+
+      }
+
+      function compruebaCP(num){
+        if (num.match(/^(\d){5}$/)) {
+        return "codigo postal correcto";
+        }else {
+          return "codigo postal incorrecto";
+
+        }
+
+      }
+
+      function compruebaFecha(num){
+        if (num.match(/^(\d){2}[-|/](\d){2}[-|/](\d){4}$/)) {
+         return "fecha correcto";
+        }else {
+          return "fecha incorrecto";
+
+        }
+
+      }
+
+      function compruebaReal(num){
+        if (num.match(/^(\+|-)?\d+((\.|,)\d+)?$/)) {
+         return "real correcto";
+        }else {
+          return "real incorrecto";
+
+        }
+
+      }
+
+      function compruebaIntnal(num){
+        if (num.match(/^\(\+(\d){2,3}\)\d+$/)) {
+         return "Internacional correcto";
+        }else {
+          return "Internacional incorrecto";
+
+        }
+
+      }
+
+      function ej3(){
+
+        var array = ["975000222","976112233","976009988","974998899","978778866"];
+        var cadena = "";
+
+      for (var i = 0; i < array.length; i++) {
+
+        cadena+=array[i];
+        if (array[i].match(/^976/)) {
+          cadena+=" Zaragoza";
+        }
+        cadena+= "<br>";
+      }
+      cadena+="<input type='button' value='Ocultar' onclick='ej3Oculta()'>"
+      document.getElementById("field3").innerHTML= cadena;
+    }
+
+      function ej3Oculta(){
+
+          document.getElementById("field3").innerHTML = "<input type='button' value='Mostrar' onclick='ej3()'>";
+
+
+      }
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
