@@ -25,6 +25,7 @@ padding-left: 45%;
     <div class="">
       <input type="button" id="Stop" value="Stop" onclick="parar()" >
       <input type="button" id="Go" value="Go¡" onclick="reanudar()" disabled>
+      <input type="button" id="colores" value="Colorea¡" onclick="colorea()">
     </div>
 
 
@@ -58,6 +59,18 @@ padding-left: 45%;
 
     }
 
+function colorea(){
+
+var colores = ["blue","yellow","pink","red","green"];
+var aleatorio = Math.round(Math.random() * 4);
+
+var color = colores[aleatorio];
+
+var reloj=document.getElementById("reloj");
+reloj.style.color = color;
+
+
+}
 
 
 
