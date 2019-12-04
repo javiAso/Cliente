@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <textarea name="name" rows="8" cols="80"></textarea>
+    <textarea name="name" rows="8" cols="80"></textarea><br>
+    <input type="button" id="salto" value="Separa¡" onclick="separa()"><br>
+    <input type="button" id="valida" value="Valida¡" onclick="valida()">
+
+    <script type="text/javascript">
+
+
+    function separa(){
+
+      var texto = document.getElementsByTagName('textarea')[0].value;
+      var array = texto.split(" ");
+      var texto2 = "";
+      for (var i = 0; i < array.length; i++) {
+        texto2+= array[i] + "\n";
+      }
+
+    document.getElementsByTagName('textarea')[1].value = texto2;
+
+
+    }
+
+    function valida(){
+
+      var texto = document.getElementsByTagName('textarea')[0].value;
+      var texto2= "";
+
+      if (texto.match(/^\d{3} \d{2} \d{2} \d{2}$/)) {
+        texto2+= "Numero entero correcto";
+      } else{
+        texto2+= "Numero entero incorrecto";
+      }
+
+      document.getElementsByTagName('textarea')[1].value = texto2;
+
+
+    }
+
+
+    </script>
+
+  </body>
+</html>
