@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+<style type="text/css">
+  h1{
+
+    text-align: center;
+margin-top: 10%;
+  }
+
+  div{
+
+padding-left: 45%;
+
+  }
+</style>
+
+  </head>
+  <body>
+
+    <h1 id="reloj"></h1>
+    <div class="">
+      <input type="button" id="Stop" value="Stop" onclick="parar()" >
+      <input type="button" id="Go" value="Go¡" onclick="reanudar()" disabled>
+    </div>
+
+
+    <script type="text/javascript">
+
+
+    var myVar = setInterval(muestraHora, 10);;
+
+
+    function muestraHora(){
+      var hora =  new Date();
+      document.getElementById('reloj').innerText = hora.getHours() + ":" + hora.getMinutes() + ":" + hora.getSeconds();
+
+
+    }
+
+    function parar(){
+
+      clearInterval(myVar);
+      document.getElementById('Stop').disabled=true;
+      document.getElementById('Go').disabled=false;
+
+    }
+
+    function reanudar(){
+
+      myVar = setInterval(muestraHora, 10);
+      document.getElementById('Stop').disabled=false;
+      document.getElementById('Go').disabled=true;
+
+
+    }
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>
