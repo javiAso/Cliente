@@ -13,7 +13,7 @@ margin-top: 10%;
 
   div{
 
-padding-left: 45%;
+padding-left: 40%;
 
   }
 </style>
@@ -61,15 +61,21 @@ padding-left: 45%;
 
 function colorea(){
 
-var colores = ["blue","yellow","pink","red","green"];
-var aleatorio = Math.round(Math.random() * 4);
 
-var color = colores[aleatorio];
 
 var reloj=document.getElementById("reloj");
-reloj.style.color = color;
+reloj.style.color = colorAleatorio();
+reloj.style.backgroundColor = colorAleatorio();
 
 
+}
+
+function colorAleatorio(){
+
+  var colores = ["blue","yellow","pink","red","green"];
+  var aleatorio = Math.round(Math.random() * 4);
+
+  return colores[aleatorio];
 }
 
 
